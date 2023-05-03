@@ -13,6 +13,9 @@ Use the docker run command to start a new container from the image you created.
 If done properly you should see you app running on port 80 on localhost
 Finally push your image to Docker Hub.
 From Docker Hub anyone can pull and run the exact copy of your app on any computer.
+
+
+
 Version2
 Push Your image to Amazon ECR and create a cluster with a task definition
 In this version we will create a frontend html form and a backend simple code snippet in php programming language.
