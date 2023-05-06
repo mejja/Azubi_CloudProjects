@@ -20,8 +20,8 @@
   <thead>
     <tr>
       <!-- tr is a row, th is the header, add or remove this to see changes on column header -->
+      <th>Email</th>
       <th>Name</th>
-      <th>Phone</th>
       <th>Country</th>
     </tr>
   </thead>
@@ -49,15 +49,15 @@
 
       // Retrieve the guest list from DynamoDB
       $result = $client->scan([
-        'TableName' => 'guests',
+        'TableName' => 'GuestBook',
       ]);
 
       // Display the guests in a table
       foreach ($result['Items'] as $guest) {
         echo '<tr>';
-        echo '<td>' . $guest['Name']['S'] . '</td>';
-        echo '<td>' . $guest['Phone']['S'] . '</td>';
-        echo '<td>' . $guest['Country']['S'] . '</td>';
+        echo '<td>' . $guest['email']['S'] . '</td>';
+        echo '<td>' . $guest['name']['S'] . '</td>';
+        echo '<td>' . $guest['country']['S'] . '</td>';
         echo '</tr>';
       }
     ?>
