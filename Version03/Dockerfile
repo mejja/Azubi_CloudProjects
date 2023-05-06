@@ -7,6 +7,8 @@ WORKDIR /var/www/html
 COPY *.php *.css ./
 
 RUN chmod 644 ./*php ./*css 
+RUN apt-get -y update
+RUN apt-get -y install git
 
 # Enable Apache mod_rewrite for friendly URLs
 RUN a2enmod rewrite
