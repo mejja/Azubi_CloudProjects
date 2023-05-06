@@ -4,9 +4,9 @@ FROM php:7.4-apache
 WORKDIR /var/www/html
 
 # Copy the four files into the container
-COPY *.php ./
+COPY *.php *.css ./
 
-RUN chmod 644 ./*php
+RUN chmod 644 ./*php ./*css 
 
 # Enable Apache mod_rewrite for friendly URLs
 RUN a2enmod rewrite
