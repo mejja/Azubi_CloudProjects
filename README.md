@@ -16,7 +16,7 @@
 - Finally push your image to Docker Hub.
 - From Docker Hub anyone can pull and run the exact copy of your app on any computer.
 
-### Version2
+### Version02
 
 ## Add backend to version01(language used php)
 
