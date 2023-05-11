@@ -32,3 +32,7 @@
 ### Version03
 
 ## simple web application that can log in a user.
+
+# 1. implenting manually
+
+# 2. Automate the process using DynamoDb

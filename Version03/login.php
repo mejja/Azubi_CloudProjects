@@ -7,7 +7,8 @@ $password = $_POST['password'];
 if ($username == 'admin' && $password == 'admin') {
   // The login was successful
   $message = "Login successful!";
-  $redirectUrl = "index.php?message=" . urlencode($message);
+  header("Location: guestlist.php");
+  //$redirectUrl = "index.php?message=" . urlencode($message);
   // Add a delay before redirecting to the next page
   echo "<meta http-equiv='refresh' content='2;url=$redirectUrl'>";
 } else {
