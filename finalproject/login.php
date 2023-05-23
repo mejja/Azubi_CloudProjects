@@ -18,6 +18,6 @@ if ($username == 'admin' && $password == 'admin') {
 }
 
 // Redirect back to the index page with the message
-//header("Location: $redirectUrl");
 header("Location: guestlist.php");
+//header("Location: $redirectUrl");
 ?>

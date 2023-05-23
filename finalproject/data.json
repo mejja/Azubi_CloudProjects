@@ -1,0 +1,30 @@
+{
+	"item1": {
+		"Email": {
+			"S": "emailOne@gmail.com"
+		},
+		"Name": {
+			"S": "Full_Name"
+		},
+		"Gender": {
+			"S": "male"
+		},
+		"Country": {
+			"S": "Country_name"
+		}
+	},
+	"Item2": {
+		"Email": {
+			"S": "EmailTwo@swn.org"
+		},
+		"Name": {
+			"S": "Name"
+		},
+		"Gender": {
+			"S": "male"
+		},
+		"Country": {
+			"S": "Country_name"
+		}
+	}
+}

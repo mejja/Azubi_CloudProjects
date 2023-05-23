@@ -16,7 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // If the redirect URL is set, redirect to it
 if (!empty($redirect_url)) {
-    header("Location: $redirect_url");
+    //header("Location: $redirect_url");
+    header("Location: guestlist.php");
     exit;
 }
 
