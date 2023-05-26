@@ -49,7 +49,7 @@
 
       // Retrieve the guest list from DynamoDB
       $result = $client->scan([
-        'TableName' => 'GuestBook',
+        'TableName' => 'guests',
       ]);
 
       // Display the guests in a table
