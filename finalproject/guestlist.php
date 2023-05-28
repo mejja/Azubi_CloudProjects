@@ -44,8 +44,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <?php
 
       // Set your credentials as environment variables
-      $access_key = 'AKIA6OLYM76FNAKEV5MV';
-      $secret_key = 'B1mVOdwROBrhnpKS99xRAh9GCGeTtPyQBKt6inDV';
+      $access_key = getenv('AWS_ACCESS_KEY');
+      $secret_key = getenv('AWS_SECRET_KEY');
       
       // Use the AWS SDK for PHP
       require 'vendor/autoload.php';

@@ -33,8 +33,8 @@ require 'vendor/autoload.php';
 
 use Aws\DynamoDb\DynamoDbClient;
 
-$access_key = 'AKIA6OLYM76FDJQUKKA3';
-$secret_key = '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';
+$access_key = getenv('AWS_ACCESS_KEY');
+$secret_key = getenv('AWS_SECRET_KEY');
 
 // Configure AWS SDK
 $client = new DynamoDbClient([

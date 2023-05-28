@@ -15,7 +15,7 @@ require 'vendor/autoload.php';
 use Aws\Credentials\Credentials;
 use Aws\DynamoDb\DynamoDbClient;
 
-$credentials = new Credentials('AKIA6OLYM76FNAKEV5MV', 'B1mVOdwROBrhnpKS99xRAh9GCGeTtPyQBKt6inDV');
+$credentials = new Credentials(getenv('AWS_ACCESS_KEY'), getenv('AWS_SECRET_KEY'));
 $dynamodb = new DynamoDbClient([
     'region' => 'us-east-1',
     'version' => '2012-08-10',
