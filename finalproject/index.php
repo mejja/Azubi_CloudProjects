@@ -60,7 +60,7 @@
                   <input type="submit" name="submit" value="LogIn">
                   <div class="field padding-bottom--24"><br>
                   <p>Not a member yet?</p>
-                  <a href="./signup.php">SignUP</a>
+                  <a href="./register.php">SignUP</a>
                 </div>
                     <?php
                         $message = $_GET['message'] ?? '';
