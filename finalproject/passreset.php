@@ -34,7 +34,7 @@ try {
             'Email' => ['S' => $email]
         ],
         'ExpressionAttributeValues' => [
-            ':password' => ['S' => $newPassword]
+            ':password' => ['S' => $hashedPassword]
         ],
         'UpdateExpression' => 'SET Password = :password'
     ]);
