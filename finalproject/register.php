@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 //Secure password hash
 $hash = password_hash($password, PASSWORD_ARGON2ID);
+
 // Check if any required field is empty
     if (empty($username) || empty($password) || empty($fullname) || empty($email) || empty($age)) {
         $message = 'Please fill all the required fields.';
@@ -79,5 +80,3 @@ $redirectUrl = "signup.php?message=" . urlencode($message);
 header("Location: $redirectUrl");
 exit();
 ?>
-     
-

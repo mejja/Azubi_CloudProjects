@@ -42,7 +42,7 @@
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
               <span class="padding-bottom--15">Password Reset Form</span>
-              <form id="stripe-login" onSubmit="return CheckPassword(this)" method="post" action="passreset.php">
+              <form id="stripe-login" onSubmit="return checkPassword(this)" method="post" action="passreset.php">
                 <div class="field padding-bottom--24">
                   <label for="username">Username</label>
                   <input type="text" name="username" placeholder="username">
@@ -61,33 +61,35 @@
                 </div>
                 <div class="field padding-bottom--24">
                   <input type="submit" name="submit" value="Reset Password">
-                    <script>
-                      const form = document.getElementById("stripe-login");
-                      const password = form.password;
-                      const confirmPassword = form.confirmPassword;
-                      const feedback = document.getElementById("confirmPassword-feedback");
-                      let isPasswordMatch = false;
+                </div>
+                <div class="field padding-bottom--24"><br>
+                  <p>Click to Return back to Login!</p>
+                  <a href="index.php">LogIn</a>
+                </div>
+                  <?php
+              echo '<script type="text/javascript">
+              function checkPassword(form) {
+              const username = form.username.value;
+              const email = form.email.value;
+              const newPassword = form.newPassword.value;
+              const confirmPassword = form.confirmPassword.value;
 
-                      confirmPassword.addEventListener("input", () => {
-                        if (newPassword.value != confirmPassword.value) {
-                          feedback.innerHTML = "Password did not match.";
-                          isPasswordMatch = false;
-                        } else {
-                          feedback.innerHTML = "";
-                          isPasswordMatch = true;
-                        }
-                      });
-
-                      form.onsubmit = function () {
-                        if (isPasswordMatch) {
-                          alert("Form submitted. Great!");
-                          return true;
-                        }
-                        alert("Wait! Password did not match.");
-                        return false;
-                      };
-                    </script> 
+              if(!username || !email || !newPassword || !confirmPassword){
+                alert("Please Enter all the Required fields!");
+              }else{
+                if (newPassword != confirmPassword) {
+                  alert("Error! Password did not match.");
+                  return false;
+                }else {
+                  alert("Congratulations! Password updated successfully ");
+                  return true;
+                  }
+                }
+              }         
+        </script>';
+          ?>     
               </form>
+
             </div>
           </div>
           <div class="footer-link padding-top--24">
@@ -102,5 +104,6 @@
       </div>
     </div>
   </div>
+
 </body>
 </html>

@@ -14,6 +14,7 @@ $tableName = 'GuestBook';
 $username = $_POST['username']; // Replace with the user input for username
 $email = $_POST['email']; // Replace with the user input for email
 $newPassword = $_POST['newPassword']; // Replace with the user input for new password
+$confirmPassword = $_POST['confirmPassword'];
 
 // Hash the new password
 $hashedPassword = password_hash($newPassword, PASSWORD_ARGON2ID);
@@ -43,4 +44,9 @@ try {
 } catch (DynamoDbException $e) {
     echo "Error updating password: " . $e->getMessage();
 }
+// If the code reaches here, it means the form was not submitted correctly
+$message = 'Please fill the form correctly.';
+$redirectUrl = "resetpassform.php?message=" . urlencode($message);
+header("Location: $redirectUrl");
+exit();
 ?>

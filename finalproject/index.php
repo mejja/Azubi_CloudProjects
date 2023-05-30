@@ -51,7 +51,7 @@
                   <div class="grid--50-50">
                     <label for="password">Password</label>
                     <div class="reset-pass">
-                      <a href="reset_pass.php">Forgot your password?</a>
+                      <a href="resetpassform.php">Forgot your password?</a>
                     </div>
                   </div>
                   <input type="password" name="password">
