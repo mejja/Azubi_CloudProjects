@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Azubi Africa: Sign in</title>
+  <title>Azubi Africa: Reset Password</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -41,36 +41,52 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--15">Sign in to your account</span>
-              <form id="stripe-login" method="post" action="login.php">
+              <span class="padding-bottom--15">Password Reset Form</span>
+              <form id="stripe-login" onSubmit="return CheckPassword(this)" method="post" action="passreset.php">
                 <div class="field padding-bottom--24">
                   <label for="username">Username</label>
-                  <input type="text" name="username">
+                  <input type="text" name="username" placeholder="username">
                 </div>
                 <div class="field padding-bottom--24">
-                  <div class="grid--50-50">
-                    <label for="password">Password</label>
-                    <div class="reset-pass">
-                      <a href="reset_pass.php">Forgot your password?</a>
-                    </div>
-                  </div>
-                  <input type="password" name="password">
+                  <label for="email">Email Address</label>
+                  <input type="text" name="email" placeholder="mail@abc.xyz">
                 </div>
                 <div class="field padding-bottom--24">
-                  <input type="submit" name="submit" value="LogIn">
-                  <div class="field padding-bottom--24"><br>
-                  <p>Not a member yet?</p>
-                  <a href="signup.php">SignUP</a>
+                  <label for="password">New Password</label>
+                  <input type="password" name="newPassword" placeholder="********">
                 </div>
-                    <?php
-                        $message = $_GET['message'] ?? '';
-                        if ($message) {
-                          echo "<p style='border-left: 3px solid red; padding-left:5px'><b><i>$message</i></b></p>";
-                          if($message == "Login successful!"){
-                              header("location:dashboard.php");
-                          }
+                <div class="field padding-bottom--24">
+                  <label for="password">Confrim New Password</label>
+                  <input type="password" name="confirmPassword" placeholder="********">
+                </div>
+                <div class="field padding-bottom--24">
+                  <input type="submit" name="submit" value="Reset Password">
+                    <script>
+                      const form = document.getElementById("stripe-login");
+                      const password = form.password;
+                      const confirmPassword = form.confirmPassword;
+                      const feedback = document.getElementById("confirmPassword-feedback");
+                      let isPasswordMatch = false;
+
+                      confirmPassword.addEventListener("input", () => {
+                        if (newPassword.value != confirmPassword.value) {
+                          feedback.innerHTML = "Password did not match.";
+                          isPasswordMatch = false;
+                        } else {
+                          feedback.innerHTML = "";
+                          isPasswordMatch = true;
                         }
-                      ?>
+                      });
+
+                      form.onsubmit = function () {
+                        if (isPasswordMatch) {
+                          alert("Form submitted. Great!");
+                          return true;
+                        }
+                        alert("Wait! Password did not match.");
+                        return false;
+                      };
+                    </script> 
               </form>
             </div>
           </div>
