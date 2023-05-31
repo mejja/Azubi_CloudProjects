@@ -1,16 +1,61 @@
+<?php
+
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+session_start();
+
+
+
+// Check if the us er is not logged in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: index.php'); // Redirect to the login page
+    exit;
+}
+?>
+
+<!DOCTYPE html> 
+
+<html> 
+<head>
   <meta charset="utf-8">
   <title>Azubi Africa: Dashboard</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+ <style>
+ .card-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-left:25px;
+  }
+
+  .card {
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-title {
+    font-weight: bold;
+    color: #009879;
+  }
+
+  .card-content {
+    color: #333;
+  }
+</style>
 </head>
 
-<body style="width:100%;overflow:hidden">
+<body style="width:100%;overflow:hidden"> 
 
 
 <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
   <h1><a href="#" rel="dofollow">DashBoard</a></h1>
   <button style="position:absolute;right:3rem;padding:.3rem"><a href="logout.php" rel="dofollow" style="color:red">Log out</a></button>
 </div>
-<div style= 'padding-left:15px' class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--left">
+
+
 <!-- how we display our content -->
 
 <?php
@@ -33,9 +78,11 @@ $client = new DynamoDbClient([
         'secret' => $secret_key,
     ],
 ]);
+
+
 // Function to retrieve unique nationalities and their occurrences
 function getUniqueNationalities() {
-
+    
     global $client;
 
     // DynamoDB table name
@@ -67,6 +114,35 @@ function getUniqueNationalities() {
         echo "Error: " . $e->getMessage();
     }
 }
+
+function loggedInSubscribers()
+{
+
+  global $client;
+
+    // DynamoDB table name
+    $tableName = 'GuestBook';
+
+    // Perform a scan operation to retrieve all items
+    $params = [
+      'TableName' => 'GuestBook',
+      'FilterExpression' => 'LoggedIn = :loggedIn',
+      'ExpressionAttributeValues' => [
+          ':loggedIn' => ['BOOL' => true],
+      ],
+      'Select' => 'COUNT',
+  ];
+
+  try {
+    $result = $client->scan($params);
+    $count = $result['Count'];
+    return $count;
+  } catch (Exception $e) {
+      // Handle the exception
+      echo "Error: " . $e->getMessage();
+  }
+}
+
 // Function to count the number of users
 function countUsers()
 {
@@ -120,19 +196,29 @@ function loggedInUsers()
     return $loggedInUsers;
 }
 
-// Example usage:
+
 // Count the number of users
 $userCount = countUsers();
 
-// Example usage:
+$logInSubscribers = loggedInSubscribers();
 
 // Retrieve unique nationalities and their occurrences
 $nationalityCount = getUniqueNationalities();
 
 // Display the result
+
+echo '<div class="card-wrapper">';
+echo '<div class="card">';
+
+// Display the result
+echo "<div class='card-title'>Nationalities and Counts</div>";
+echo "<div class='card-content'>";
 foreach ($nationalityCount as $nationality => $count) {
-    echo "Nationality: $nationality, Count: $count" . "<br>";
+    echo "Country: $nationality - users: $count" . "<br>";
 }
+
+echo "</div>";
+echo "</div>";
 
 $userLoggedIn = loggedInUsers();
 
@@ -141,12 +227,26 @@ $userString = implode("<br>", array_map(function($user) {
     return "Email: " . $user['email'] . " ".", Login Time: " . $user['loginTime'];
 }, $userLoggedIn));
 
+echo '<div class="card">';
 // Display the result
-echo "<div style='color:blue; margin-left:20%; padding-left:5px'>Total number of users: </div>" . $userCount. "<br>";
-echo "<div style='color:green; margin-left:20%; padding-left:5px'>Logged-in users: </div>" . $userString . "<br>";
-//echo "<div style='color:red; margin-left:20%; padding-left:5px'>Login Time: </div>" . $time . "<br>";
+echo "<div class='card-title'>Total Number of subscribers</div>";
+echo "<div div class='card-content'> </div>" . $userCount. "<br>";
+echo '</div>';
+
+echo '<div class="card">';
+echo "<div class='card-title'>Logged In Users:</div>";
+echo "<div div class='card-content'> </div>" . $userString . "<br>";
+echo '</div>';
+
+
+echo '<div class="card">';
+echo "<div class='card-title'>Number of Logged In Users</div>";
+echo "<div div class='card-content'> </div>" . $logInSubscribers . "<br>";
+echo "</div>";
+echo "</div>";
+
 ?>
-</div>
+
 
 <!-- styles for our table .... dont tamper -->
 <style>
