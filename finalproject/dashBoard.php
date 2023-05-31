@@ -1,7 +1,12 @@
 <?php
+
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
 session_start();
 
-// Check if the user is not logged in
+
+
+// Check if the us er is not logged in
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header('Location: index.php'); // Redirect to the login page
     exit;
@@ -24,17 +29,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <h1><a href="#" rel="dofollow">DashBoard</a></h1>
   <button style="position:absolute;right:3rem;padding:.3rem"><a href="logout.php" rel="dofollow" style="color:red">Log out</a></button>
 </div>
-<div class="margin:10px; box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--left">
+<div style= 'padding-left:15px' class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--left">
 <!-- how we display our content -->
 
 <?php
+
+//require 'loggedInUsers.php';
+
 // Include the AWS SDK for PHP
 require 'vendor/autoload.php';
 
 use Aws\DynamoDb\DynamoDbClient;
-
-$access_key = getenv('AWS_ACCESS_KEY');
-$secret_key = getenv('AWS_SECRET_KEY');
+$access_key = '';
+$secret_key = '';
 
 // Configure AWS SDK
 $client = new DynamoDbClient([
@@ -106,12 +113,39 @@ function countUsers()
     }
 }
 
+function loggedInUsers()
+{
+    global $client;
+
+    // Perform a scan operation to retrieve the logged-in users
+    $params = [
+        'TableName' => 'GuestBook',
+        'FilterExpression' => 'LoggedIn = :loggedIn',
+        'ExpressionAttributeValues' => [
+            ':loggedIn' => ['BOOL' => true],
+        ],
+    ];
+
+    $result = $client->scan($params);
+
+    $items = $result['Items'];
+
+    $loggedInUsers = [];
+
+    foreach ($items as $item) {
+        $email = $item['Email']['S'];
+        $loginTime = $item['LoginTime']['S'];
+
+        $loggedInUsers[] = ['email' => $email, 'loginTime' => $loginTime];
+    }
+
+    return $loggedInUsers;
+}
+
 // Example usage:
 
 // Count the number of users
 $userCount = countUsers();
-
-
 
 // Example usage:
 
@@ -123,9 +157,18 @@ foreach ($nationalityCount as $nationality => $count) {
     echo "Nationality: $nationality, Count: $count" . "<br>";
 }
 
+$userLoggedIn = loggedInUsers();
+
+// Convert the array to a string
+$userString = implode("<br>", array_map(function($user) {
+    return "Email: " . $user['email'] . " ".", Login Time: " . $user['loginTime'];
+}, $userLoggedIn));
+
 // Display the result
-echo "<div id='userCount' style='color:blue; margin-left:25% padding-left:5px'>Total number of users: </div>" . $userCount;
-    ?>
+echo "<div style='color:blue; margin-left:20%; padding-left:5px'>Total number of users: </div>" . $userCount. "<br>";
+echo "<div style='color:green; margin-left:20%; padding-left:5px'>Logged-in users: </div>" . $userString . "<br>";
+//echo "<div style='color:red; margin-left:20%; padding-left:5px'>Login Time: </div>" . $time . "<br>";
+?>
 </div>
 
 <!-- styles for our table .... dont tamper -->
@@ -177,4 +220,3 @@ echo "<div id='userCount' style='color:blue; margin-left:25% padding-left:5px'>T
       </div>
 </body>
 </html>
-
