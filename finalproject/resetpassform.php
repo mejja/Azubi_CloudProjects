@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Azubi Africa: Reset Password</title>
+  <title>Gold Grid: Reset Password</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -36,7 +36,7 @@
       </div>
       <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
         <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-          <h1><a href="#" rel="dofollow">Azubi Africa</a></h1>
+          <h1><a href="#" rel="dofollow">Gold Grid</a></h1>
         </div>
         <div class="formbg-outer">
           <div class="formbg">
@@ -45,19 +45,19 @@
               <form id="stripe-login" onSubmit="return checkPassword(this)" method="post" action="passreset.php">
                 <div class="field padding-bottom--24">
                   <label for="username">Username</label>
-                  <input type="text" name="username" placeholder="username">
+                  <input type="text" name="username" placeholder="username" required minlength="4">
                 </div>
                 <div class="field padding-bottom--24">
                   <label for="email">Email Address</label>
-                  <input type="text" name="email" placeholder="mail@abc.xyz">
+                  <input type="email" name="email" placeholder="mail@abc.xyz" required>
                 </div>
                 <div class="field padding-bottom--24">
                   <label for="password">New Password</label>
-                  <input type="password" name="newPassword" placeholder="********">
+                  <input type="password" name="newPassword" placeholder="********" required minlength="8">
                 </div>
                 <div class="field padding-bottom--24">
                   <label for="password">Confrim New Password</label>
-                  <input type="password" name="confirmPassword" placeholder="********">
+                  <input type="password" name="confirmPassword" placeholder="********" required minlength="8">
                 </div>
                 <div class="field padding-bottom--24">
                   <input type="submit" name="submit" value="Reset Password">
@@ -69,14 +69,9 @@
                   <?php
               echo '<script type="text/javascript">
               function checkPassword(form) {
-              const username = form.username.value;
-              const email = form.email.value;
               const newPassword = form.newPassword.value;
               const confirmPassword = form.confirmPassword.value;
 
-              if(!username || !email || !newPassword || !confirmPassword){
-                alert("Please Enter all the Required fields!");
-              }else{
                 if (newPassword != confirmPassword) {
                   alert("Error! Password did not match.");
                   return false;
@@ -84,7 +79,6 @@
                   alert("Congratulations! Password updated successfully ");
                   return true;
                   }
-                }
               }         
         </script>';
           ?>     
@@ -93,11 +87,11 @@
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span>We hope you enjoy the project?</span>
+            <span>Welcome to Gold Grid</span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
-              <span><a href="#">© azubiafrica</a></span>
-              <span><a href="https://azubiafrica.org" target="_blank" >Contact</a></span>
-              <span><a href="https://azubiafrica.org" target="_blank">Privacy & terms</a></span>
+              <span><a href="#">©2023 Gold Grid</a></span>
+              <span><a href="https://goldgrid.com" target="_blank" >Contact</a></span>
+              <span><a href="https://goldgrid.com" target="_blank">Privacy & terms</a></span>
             </div>
           </div>
         </div>

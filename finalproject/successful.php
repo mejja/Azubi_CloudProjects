@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Azubi Africa: Sign in</title>
+  <title>Gold Grid: Sign in</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 

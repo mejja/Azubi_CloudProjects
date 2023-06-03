@@ -45,7 +45,7 @@
               <form id="stripe-login" method="post" action="login.php">
                 <div class="field padding-bottom--24">
                   <label for="username">Username</label>
-                  <input type="text" name="username">
+                  <input type="text" name="username" required minlength="4">
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
@@ -54,7 +54,7 @@
                       <a href="resetpassform.php">Forgot your password?</a>
                     </div>
                   </div>
-                  <input type="password" name="password">
+                  <input type="password" name="password" required minlength="8">
                 </div>
                 <div class="field padding-bottom--24">
                   <input type="submit" name="submit" value="LogIn">
@@ -75,11 +75,11 @@
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span>We hope you enjoy the project?</span>
+            <span>Welcome to Gold Grid</span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
-              <span><a href="#">© azubiafrica</a></span>
-              <span><a href="https://azubiafrica.org" target="_blank" >Contact</a></span>
-              <span><a href="https://azubiafrica.org" target="_blank">Privacy & terms</a></span>
+              <span><a href="#">©2023 Gold Grid</a></span>
+              <span><a href="https://goldgrid.com" target="_blank" >Contact</a></span>
+              <span><a href="https://goldgrid.com" target="_blank">Privacy & terms</a></span>
             </div>
           </div>
         </div>

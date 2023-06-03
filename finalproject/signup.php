@@ -8,7 +8,7 @@ $_SESSION['csrf_token'] = $token;
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Azubi Africa: Sign up</title>
+  <title>Gold Grid: Sign up</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -43,7 +43,7 @@ $_SESSION['csrf_token'] = $token;
       </div>
       <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
         <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-          <h1><a href="#" rel="dofollow">Azubi Africa</a></h1>
+          <h1><a href="#" rel="dofollow">Gold Grid</a></h1>
         </div>
         <div class="formbg-outer">
           <div class="formbg">
@@ -56,24 +56,24 @@ $_SESSION['csrf_token'] = $token;
                 </div>
  				        <div class="field padding-bottom--24">
                     <label for="username">Username</label>
-                    <input type="text" name="username" placeholder="username">
+                    <input type="text" name="username" placeholder="username" required minlength="3">
                 </div>
                 <div class="field padding-bottom--24">
                     <label for="password">Password</label>
-                    <input type="password" name="password" placeholder="********">
+                    <input type="password" name="password" placeholder="********" required minlength="8">
                 </div>
                 <!-- New input fields for additional user data -->
                 <div class="field padding-bottom--24">
                     <label for="fullname">Full Name</label>
-                    <input type="text" name="fullname" placeholder="FirstName  LastName">
+                    <input type="text" name="fullname" placeholder="FirstName  LastName" required minlength="4">
                 </div>
                 <div class="field padding-bottom--24">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" placeholder="mail@abc.xyz">
+                    <label for="email_address">Email</label>
+                    <input type="email" id="email_address" name="email_address" placeholder="mail@abc.xyz" required>
                 </div>
                  <div class="field padding-bottom--24">
                     <label for="Gender">Select Gender</label>
-                    <select name="gender" id="Gender">
+                    <select name="gender" id="Gender" required>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Non-binary">Non-binary</option>
@@ -81,15 +81,15 @@ $_SESSION['csrf_token'] = $token;
                 </div>
 				        <div class="field padding-bottom--24">
                     <label for="age">Age</label>
-                    <input type="number" name="age" placeholder="00">
+                    <input type="number" name="age" placeholder="00" required minlength="18">
                 </div>
                 <div class="field padding-bottom--24">
                     <label for="occupation">Occupation</label>
-                    <input type="text" name="occupation" placeholder="Profession">
+                    <input type="text" name="occupation" placeholder="Profession" required minlength="3">
                 </div>
 				        <div class="field padding-bottom--24">
                 <label for="nationality">Nationality</label>
-                <select name="nationality">
+                <select name="nationality" required >
                 <option value=""> Select Nationality</option>
                 <option value="afghan">Afghan</option>
                 <option value="albanian">Albanian</option>
@@ -255,7 +255,7 @@ $_SESSION['csrf_token'] = $token;
                 <option value="solomon islander">Solomon Islander</option>
                 <option value="somali">Somali</option>
                 <option value="south african">South African</option>
-				       <option value="south korean">South Korean</option>
+				        <option value="south korean">South Korean</option>
                 <option value="spanish">Spanish</option>
                 <option value="sri lankan">Sri Lankan</option>
                 <option value="sudanese">Sudanese</option>
@@ -287,11 +287,13 @@ $_SESSION['csrf_token'] = $token;
                 </select>
                 </div>
 				        <div class="field padding-bottom--24">
-                    <label for="Maritalstatus">Select Marital Status</label>
+                    <label for="Maritalstatus" required>Select Marital Status</label>
                     <select name="maritalstatus" id="Maritalstatus">
                     <option value="Single"> Single</option>
                     <option value="Married"> Married</option>
                     <option value="Divorced"> Divorced</option>
+                    <option value="Divorced"> Widow</option>
+                     <option value="Divorced"> Widower</option>
                     </select>
                     </div>
                 <div class="field padding-bottom--24">
@@ -314,11 +316,11 @@ $_SESSION['csrf_token'] = $token;
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <!-- <span>We hope you enjoy the project?</span> -->
+            <span>We hope you enjoy the project?</span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
-              <span><a href="#">© azubiafrica</a></span>
-              <span><a href="https://azubiafrica.org" target="_blank" >Contact</a></span>
-              <span><a href="https://azubiafrica.org" target="_blank">Privacy & terms</a></span>
+              <span><a href="#">©2023 Gold Grid</a></span>
+              <span><a href="https://goldgrid.com" target="_blank" >Contact</a></span>
+              <span><a href="https://goldgrid.com" target="_blank">Privacy & terms</a></span>
             </div>
           </div>
         </div>
