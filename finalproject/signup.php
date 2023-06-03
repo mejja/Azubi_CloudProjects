@@ -316,7 +316,7 @@ $_SESSION['csrf_token'] = $token;
             </div>
           </div>
           <div class="footer-link padding-top--24">
-            <span>We hope you enjoy the project?</span>
+            <span>Welcome to Gold Grid</span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
               <span><a href="#">©2023 Gold Grid</a></span>
               <span><a href="https://goldgrid.com" target="_blank" >Contact</a></span>
