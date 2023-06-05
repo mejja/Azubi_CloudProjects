@@ -53,11 +53,11 @@
                 </div>
                 <div class="field padding-bottom--24">
                   <label for="password">New Password</label>
-                  <input type="password" name="newPassword" placeholder="********" required minlength="8">
+                  <input type="password" name="newPassword" placeholder="Enter New Password" required minlength="8">
                 </div>
                 <div class="field padding-bottom--24">
                   <label for="password">Confrim New Password</label>
-                  <input type="password" name="confirmPassword" placeholder="********" required minlength="8">
+                  <input type="password" name="confirmPassword" placeholder="Confirm New Password" required minlength="8">
                 </div>
                 <div class="field padding-bottom--24">
                   <input type="submit" name="submit" value="Reset Password">
