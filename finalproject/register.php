@@ -46,7 +46,7 @@ $hash = password_hash($password, PASSWORD_ARGON2ID);
     'Username' => ['S' => $username],
     'Password' => ['S' => $hash],
     'Name' => ['S' => $fullname],
-    'Email' => ['S' => $email],
+    'Email' => ['S' => $email_address],
     'Gender' => ['S' => $gender],
     'Age' => ['N' => $age],
     'Occupation' => ['S' => $occupation],
