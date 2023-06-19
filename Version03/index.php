@@ -45,7 +45,7 @@
               <form id="stripe-login" method="post" action="login.php">
                 <div class="field padding-bottom--24">
                   <label for="username">Username</label>
-                  <input type="text" name="username">
+                  <input type="text" name="username" required>
                 </div>
                 <div class="field padding-bottom--24">
                   <div class="grid--50-50">
@@ -54,7 +54,7 @@
                       <a href="http://sing_a_song_and_lets_do_some_research">Forgot your password?</a>
                     </div>
                   </div>
-                  <input type="password" name="password">
+                  <input type="password" name="password" required>
                 </div>
                 <div class="field padding-bottom--24">
                   <input type="submit" name="submit" value="Continue">
