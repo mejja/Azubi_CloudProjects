@@ -36,3 +36,5 @@
 # 1. implenting manually
 
 # 2. Automate the process using DynamoDb
+
+# 3. used terraform to automate deployment.
